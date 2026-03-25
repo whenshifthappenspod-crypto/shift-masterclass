@@ -30,7 +30,7 @@
                     <li><a href="#benefits">Benefits</a></li>
                     <li><a href="#podcast">Podcast</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#enroll" class="btn btn-primary">Apply Now</a></li>
+                    <li><a href="#pricing" class="btn btn-primary">Apply Now</a></li>
                 </ul>
             </div>
         </div>
@@ -48,14 +48,15 @@
                     Start Learning from <span class="shift-text">Practitioners.</span>
                 </h1>
                 <div class="hero-guests">
-                    <img src="images/banner_guests_only.png" alt="SHIFT Masterclass featured guests">
+                    <img src="images/Banner YT - IMG_5723.JPG" alt="SHIFT Masterclass featured guests">
+                    <p class="speaker-disclaimer">Full speaker lineup to be announced. Guest faculty subject to change.</p>
                 </div>
                 <p class="hero-subtitle">
                     A 12-module crypto masterclass for professionals who refuse to gamble with their wealth. 
                     Learn from industry builders, not social media hype.
                 </p>
                 <div class="hero-cta">
-                    <a href="#enroll" class="btn btn-primary btn-large">
+                    <a href="#pricing" class="btn btn-primary btn-large">
                         <i class="fas fa-rocket"></i> Apply for Next Cohort
                     </a>
                     <a href="#curriculum" class="btn btn-secondary btn-large">
@@ -216,7 +217,7 @@
             </div>
             <div class="audience-cta">
                 <p class="disclaimer">If you're looking for moonshot promises or day trading tips, this isn't for you.</p>
-                <a href="#enroll" class="btn btn-primary btn-large">
+                <a href="#pricing" class="btn btn-primary btn-large">
                     <i class="fas fa-user-check"></i> Yes, That's Me - Let Me Apply
                 </a>
             </div>
@@ -507,64 +508,45 @@
         </div>
     </section>
 
-    <!-- Enrollment Section -->
-    <section class="enrollment" id="enroll">
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
         <div class="container">
-            <div class="enrollment-content">
-                <div class="enrollment-text">
-                    <h2 class="section-title">Ready to Learn the Right Way?</h2>
-                    <p class="lead">
-                        This is executive-level education - think INSEAD or Wharton for Web3. 
-                        Cohorts are intentionally limited to maintain quality and enable direct expert access.
-                    </p>
-                    <div class="enrollment-features">
-                        <div class="feature-badge">
-                            <i class="fas fa-users"></i>
-                            <span>Limited Cohort Size</span>
-                        </div>
-                        <div class="feature-badge">
-                            <i class="fas fa-calendar-check"></i>
-                            <span>12-Week Program</span>
-                        </div>
-                        <div class="feature-badge">
-                            <i class="fas fa-video"></i>
-                            <span>Live Interactive Sessions</span>
-                        </div>
-                        <div class="feature-badge">
-                            <i class="fas fa-certificate"></i>
-                            <span>Professional Certification</span>
-                        </div>
+            <div class="section-header" style="text-align:center;">
+                <h2 class="section-title">Join the First Cohort. September 2026.</h2>
+            </div>
+            <div class="pricing-cards">
+                <!-- Early Bird -->
+                <div class="pricing-card pricing-card--featured">
+                    <div class="pricing-card__badge">Early Bird — First 50 Seats</div>
+                    <div class="pricing-card__name">SHIFT Masterclass</div>
+                    <div class="pricing-card__price">
+                        <span class="pricing-card__currency">$</span>850
                     </div>
-                    <div class="pricing-note">
-                        <i class="fas fa-info-circle"></i>
-                        <p>Investment details shared upon application approval. Premium pricing reflects MBA-level education quality.</p>
-                    </div>
+                    <div class="pricing-card__original">Regular price $999</div>
+                    <ul class="pricing-card__features">
+                        <li><i class="fas fa-check"></i> All live sessions with Q&amp;A</li>
+                        <li><i class="fas fa-check"></i> Access to session recordings</li>
+                        <li><i class="fas fa-check"></i> Expert guest speakers</li>
+                        <li><i class="fas fa-check"></i> Certificate of completion</li>
+                        <li><i class="fas fa-check"></i> Free Trezor cold wallet included</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary btn-block" data-open-modal="enrollModal">Reserve Early Bird Seat <i class="fas fa-arrow-right"></i></button>
+                    <p class="pricing-card__note"><i class="fas fa-bolt"></i> 50 seats only at this price</p>
                 </div>
-                <div class="enrollment-form">
-                    <div class="form-card">
-                        <h3>Apply for Next Cohort</h3>
-                        <form id="enrollmentForm" method="POST" action="https://formsubmit.co/whenshifthappens.pod@gmail.com">
-                            <div class="form-group">
-                                <label for="fullName">Full Name *</label>
-                                <input type="text" id="fullName" name="fullName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="linkedin">LinkedIn Profile (optional)</label>
-                                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
-                            </div>
-                            <input type="hidden" name="_captcha" value="false">
-                            <button type="submit" class="btn btn-primary btn-block">
-                                <i class="fas fa-paper-plane"></i> Submit Application
-                            </button>
-                            <p class="form-note">
-                                We review applications within 48 hours. Limited spots available per cohort.
-                            </p>
-                        </form>
+                <!-- Regular -->
+                <div class="pricing-card">
+                    <div class="pricing-card__name">SHIFT Masterclass</div>
+                    <div class="pricing-card__price">
+                        <span class="pricing-card__currency">$</span>999
                     </div>
+                    <ul class="pricing-card__features">
+                        <li><i class="fas fa-check"></i> All live sessions with Q&amp;A</li>
+                        <li><i class="fas fa-check"></i> Access to session recordings</li>
+                        <li><i class="fas fa-check"></i> Expert guest speakers</li>
+                        <li><i class="fas fa-check"></i> Certificate of completion</li>
+                        <li class="pricing-card__feature--excluded"><i class="fas fa-minus"></i> Trezor cold wallet not included</li>
+                    </ul>
+                    <button type="button" class="btn btn-secondary btn-block" data-open-modal="enrollModal">Enrol at Full Price <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
         </div>
@@ -662,7 +644,7 @@
                     Join the professionals who refuse to learn crypto from influencers. 
                     <br>Limited spots available for the next cohort.
                 </p>
-                <a href="#enroll" class="btn btn-primary btn-large">
+                <a href="#pricing" class="btn btn-primary btn-large">
                     <i class="fas fa-bolt"></i> Apply for SHIFT Masterclass
                 </a>
                 <div class="cta-trust">
@@ -723,7 +705,7 @@
                         <ul>
                             <li><a href="https://www.kevinfollonier.com" target="_blank">Kevin Follonier</a></li>
                             <li><a href="https://www.youtube.com/@when-shift-happens" target="_blank">Podcast</a></li>
-                            <li><a href="#enroll">Apply Now</a></li>
+                            <li><a href="#pricing">Apply Now</a></li>
                         </ul>
                     </div>
                 </div>
@@ -737,6 +719,34 @@
             </div>
         </div>
     </footer>
+
+    <!-- Enrol Modal -->
+    <div class="modal-overlay" id="enrollModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <button class="modal__close" id="modalClose" aria-label="Close">&times;</button>
+            <h3 class="modal__title" id="modalTitle">Reserve Your Early Bird Seat</h3>
+            <p class="modal__subtitle">50 seats only · September 2026 cohort</p>
+            <form id="enrollmentForm" method="POST" action="https://formsubmit.co/whenshifthappens.pod@gmail.com">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile (optional)</label>
+                    <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                </div>
+                <input type="hidden" name="_captcha" value="false">
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-paper-plane"></i> Submit Application
+                </button>
+                <p class="form-note">We review applications within 48 hours. Limited spots available per cohort.</p>
+            </form>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

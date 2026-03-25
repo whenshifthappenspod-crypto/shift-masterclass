@@ -333,11 +333,37 @@ function trackEvent(category, action, label) {
 // Track CTA button clicks
 document.addEventListener('DOMContentLoaded', function() {
     const ctaButtons = document.querySelectorAll('.btn-primary');
-    
+
     ctaButtons.forEach(button => {
         button.addEventListener('click', function() {
             const text = this.textContent.trim();
             trackEvent('CTA', 'click', text);
         });
+    });
+});
+
+// Modal
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('enrollModal');
+    const closeBtn = document.getElementById('modalClose');
+
+    document.querySelectorAll('[data-open-modal="enrollModal"]').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            overlay.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeModal() {
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => {
+        if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeModal();
     });
 });
