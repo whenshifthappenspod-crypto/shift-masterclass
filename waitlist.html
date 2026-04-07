@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIFT Masterclass — Join the Waiting List</title>
+    <meta name="description" content="Stop learning from influencers. Start learning from practitioners. Premium crypto education powered by the When Shift Happens podcast. Join the waiting list today.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ── Minimal nav ── */
+        .wl-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(10,10,10,0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 18px 0;
+        }
+        .wl-nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .wl-nav .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+        }
+        .wl-nav .logo i { color: var(--accent-color); }
+
+        /* ── Hero two-column layout ── */
+        .wl-hero {
+            min-height: 100vh;
+            padding-top: 100px;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(ellipse 80% 60% at 60% 50%, rgba(255,69,0,0.07) 0%, transparent 70%);
+        }
+        .wl-hero .container {
+            width: 100%;
+        }
+        .wl-hero__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .wl-hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,69,0,0.12);
+            border: 1px solid rgba(255,69,0,0.3);
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+        }
+        .wl-hero__title {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .wl-hero__subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+        .wl-hero__stats {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 36px;
+        }
+        .wl-hero__stat-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+        .wl-hero__stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .wl-hero__speakers {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .wl-hero__speakers img {
+            width: 100%;
+            display: block;
+        }
+        .wl-hero__speaker-note {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin: 10px 0 0;
+            font-style: italic;
+        }
+
+        /* ── Form card ── */
+        .wl-form-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+        }
+        .wl-form-card__eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 6px;
+        }
+        .wl-form-card__title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+        .wl-form-card__sub {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+        .wl-form-card .form-group {
+            margin-bottom: 18px;
+        }
+        .wl-form-card label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .wl-form-card input {
+            width: 100%;
+            background: #111;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .wl-form-card input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(255,69,0,0.12);
+        }
+        .wl-form-card input.input-error {
+            border-color: #e53e3e;
+        }
+        .field-error {
+            color: #e53e3e;
+            font-size: 0.8rem;
+            margin-top: 6px;
+            display: none;
+        }
+        .wl-form-card .btn-submit {
+            width: 100%;
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .wl-form-card .btn-submit:hover { background: var(--accent-hover); }
+        .wl-form-card .btn-submit:active { transform: scale(0.99); }
+        .wl-form-card .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        .form-trust {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 14px;
+            justify-content: center;
+        }
+        .form-trust i { color: var(--accent-color); font-size: 0.85rem; }
+        .form-global-error {
+            background: rgba(229,62,62,0.1);
+            border: 1px solid rgba(229,62,62,0.3);
+            color: #e53e3e;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        /* ── Success state ── */
+        .form-success {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .form-success i {
+            font-size: 3rem;
+            color: #48bb78;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .form-success h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        .form-success p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        /* ── Benefits strip ── */
+        .wl-benefits {
+            padding: 80px 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .wl-benefits__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .wl-benefit {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .wl-benefit__icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            background: rgba(255,69,0,0.1);
+            border: 1px solid rgba(255,69,0,0.25);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-size: 1rem;
+        }
+        .wl-benefit__title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .wl-benefit__text {
+            font-size: 0.87rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Sponsors ── */
+        .wl-sponsors {
+            padding: 48px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .wl-sponsors__label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        .wl-sponsors__logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .wl-sponsors__logos img {
+            height: 28px;
+            filter: brightness(0) invert(1);
+            opacity: 0.45;
+        }
+
+        /* ── FAQ ── */
+        .wl-faq {
+            padding: 80px 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .wl-faq__title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .wl-faq__list {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .wl-faq__item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .wl-faq__question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            cursor: pointer;
+            gap: 16px;
+        }
+        .wl-faq__question h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        .wl-faq__question i {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            transition: transform 0.25s;
+        }
+        .wl-faq__item.open .wl-faq__question i {
+            transform: rotate(180deg);
+        }
+        .wl-faq__answer {
+            display: none;
+            padding-bottom: 20px;
+        }
+        .wl-faq__item.open .wl-faq__answer {
+            display: block;
+        }
+        .wl-faq__answer p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ── Bottom CTA ── */
+        .wl-bottom-cta {
+            padding: 80px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .wl-bottom-cta h2 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+        .wl-bottom-cta p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        /* ── Minimal footer ── */
+        .wl-footer {
+            border-top: 1px solid var(--border-color);
+            padding: 32px 0;
+        }
+        .wl-footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .wl-footer__copy {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        .wl-footer__social {
+            display: flex;
+            gap: 20px;
+        }
+        .wl-footer__social a {
+            color: var(--text-muted);
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .wl-footer__social a:hover { color: var(--accent-color); }
+
+        /* ── Responsive ── */
+        @media (max-width: 860px) {
+            .wl-hero__grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .wl-benefits__grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .wl-hero__stats {
+                gap: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .wl-form-card { padding: 28px 20px; }
+            .wl-footer .container { flex-direction: column; align-items: flex-start; }
+        }
+
+        /* strikethrough */
+        .strikethrough {
+            text-decoration: line-through;
+            text-decoration-thickness: from-font;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Minimal Nav -->
+    <nav class="wl-nav">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-bolt"></i>
+                <span class="shift-text">[SHIFT]</span> Masterclass
+            </a>
+            <a href="#form" class="btn btn-primary" style="font-size:0.85rem; padding:10px 20px;">
+                Join Waiting List
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="wl-hero">
+        <div class="container">
+            <div class="wl-hero__grid">
+
+                <!-- Left: copy -->
+                <div class="wl-hero__left">
+                    <div class="wl-hero__badge">
+                        <i class="fas fa-podcast"></i> When Shift Happens Podcast
+                    </div>
+                    <h1 class="wl-hero__title">
+                        Stop Learning from <span class="strikethrough">Influencers</span>.<br>
+                        Start Learning from <span class="shift-text">Practitioners.</span>
+                    </h1>
+                    <p class="wl-hero__subtitle">
+                        A 12-module crypto masterclass taught by the founders, investors, and
+                        experts behind the world's biggest digital asset companies.
+                        <strong style="color:var(--text-primary);">September 2026 — 100 early bird seats only.</strong>
+                    </p>
+                    <div class="wl-hero__stats">
+                        <div>
+                            <div class="wl-hero__stat-num">100K+</div>
+                            <div class="wl-hero__stat-label">Podcast Subscribers</div>
+                        </div>
+                        <div>
+                            <div class="wl-hero__stat-num">150+</div>
+                            <div class="wl-hero__stat-label">Expert Interviews</div>
+                        </div>
+                        <div>
+                            <div class="wl-hero__stat-num">12</div>
+                            <div class="wl-hero__stat-label">Live Modules</div>
+                        </div>
+                    </div>
+                    <div class="wl-hero__speakers">
+                        <img src="images/speakers-banner.jpg" alt="SHIFT Masterclass featured guests">
+                    </div>
+                    <p class="wl-hero__speaker-note">Full speaker lineup to be announced. Guest faculty subject to change.</p>
+                </div>
+
+                <!-- Right: inline form -->
+                <div class="wl-form-card" id="form">
+                    <div class="wl-form-card__eyebrow">Early Bird · First 100 Seats</div>
+                    <h2 class="wl-form-card__title">Reserve Your Spot</h2>
+                    <p class="wl-form-card__sub">September 2026 cohort · Free Trezor cold wallet included for early birds</p>
+
+                    <div class="form-global-error" id="globalError"></div>
+
+                    <form id="enrollmentForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Jane Smith" required>
+                            <div class="field-error" id="nameError">Please enter your full name.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                            <div class="field-error" id="emailError">Please enter a valid email address.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn Profile <span style="font-weight:400;color:var(--text-muted)">(optional)</span></label>
+                            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                        </div>
+                        <input type="hidden" name="_captcha" value="false">
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <i class="fas fa-bolt"></i> Join Waiting List
+                        </button>
+                        <div class="form-trust">
+                            <i class="fas fa-shield-check"></i>
+                            No spam. We'll be in touch within 48 hours.
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors -->
+    <section class="sponsors-strip">
+        <div class="container">
+            <h2 class="sponsors-title">Sponsors</h2>
+            <div class="sponsors-logos">
+                <img src="images/Kast-logo.png" alt="Kast" class="sponsor-logo">
+                <img src="images/trezor-logo.png" alt="Trezor" class="sponsor-logo">
+                <img src="images/Bitwise-logo.png" alt="Bitwise" class="sponsor-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="wl-benefits">
+        <div class="container">
+            <div class="wl-benefits__grid">
+                <div class="wl-benefit">
+                    <div class="wl-benefit__icon"><i class="fas fa-certificate"></i></div>
+                    <div>
+                        <div class="wl-benefit__title">International Certificate</div>
+                        <p class="wl-benefit__text">Recognized credential for your LinkedIn and CV — proof of serious Web3 knowledge from real practitioners.</p>
+                    </div>
+                </div>
+                <div class="wl-benefit">
+                    <div class="wl-benefit__icon"><i class="fas fa-video"></i></div>
+                    <div>
+                        <div class="wl-benefit__title">12 Live Interactive Sessions</div>
+                        <p class="wl-benefit__text">Real-time Q&amp;A with industry builders managing billions in digital assets. No pre-recorded lectures.</p>
+                    </div>
+                </div>
+                <div class="wl-benefit">
+                    <div class="wl-benefit__icon"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <div class="wl-benefit__title">Risk-First Framework</div>
+                        <p class="wl-benefit__text">No moonshot promises. Learn Bitcoin fundamentals, security, DeFi, regulation, and macro cycles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="wl-faq">
+        <div class="container">
+            <h2 class="wl-faq__title">Common Questions</h2>
+            <div class="wl-faq__list">
+
+                <div class="wl-faq__item">
+                    <div class="wl-faq__question">
+                        <h3>How is SHIFT different from other crypto courses?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="wl-faq__answer">
+                        <p>SHIFT is taught by <strong>industry practitioners</strong> — founders, investors, and experts managing billions in crypto — not influencers selling courses. We focus on long-term wealth building, risk management, and fundamentals, not moonshot gambling. You also receive an internationally recognized certificate.</p>
+                    </div>
+                </div>
+
+                <div class="wl-faq__item">
+                    <div class="wl-faq__question">
+                        <h3>How much does it cost?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="wl-faq__answer">
+                        <p><strong>$850 Early Bird</strong> (first 100 seats, includes a free Trezor cold wallet) or <strong>$999 regular price</strong>. Executive-level education comparable to MBA programs — quality, expert access, and career value.</p>
+                    </div>
+                </div>
+
+                <div class="wl-faq__item">
+                    <div class="wl-faq__question">
+                        <h3>What's the time commitment?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="wl-faq__answer">
+                        <p>The program runs for 2 weeks, 5 days per week with one 60–90 minute live session per day. Sessions are scheduled for professional availability (evenings/weekends). Expect 6–9 hours per week total.</p>
+                    </div>
+                </div>
+
+                <div class="wl-faq__item">
+                    <div class="wl-faq__question">
+                        <h3>Is there a satisfaction guarantee?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="wl-faq__answer">
+                        <p>Yes. If after the first two modules you feel SHIFT isn't delivering practitioner-level value, we offer a full refund. We're confident in the quality and want committed participants who benefit fully.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="wl-bottom-cta">
+        <div class="container">
+            <h2>Stop Gambling. Start Building Wealth.</h2>
+            <p>Limited to 100 early bird seats. September 2026 cohort.</p>
+            <a href="#form" class="btn btn-primary btn-large">
+                <i class="fas fa-bolt"></i> Join Waiting List
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="wl-footer">
+        <div class="container">
+            <p class="wl-footer__copy">&copy; 2026 SHIFT Masterclass · Powered by When Shift Happens Podcast</p>
+            <div class="wl-footer__social">
+                <a href="https://www.youtube.com/@when-shift-happens" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://twitter.com/KevinWSHPod" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/kevinfollonier" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/kevinfollonier" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ── FAQ accordion ──
+    document.querySelectorAll('.wl-faq__question').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.closest('.wl-faq__item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.wl-faq__item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+
+    // ── Smooth scroll for anchor links ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // ── Nav scroll effect ──
+    const nav = document.querySelector('.wl-nav');
+    window.addEventListener('scroll', () => {
+        nav.style.borderBottomColor = window.scrollY > 40
+            ? 'rgba(255,69,0,0.2)'
+            : 'var(--border-color)';
+    });
+
+    // ── Form submission ──
+    const form = document.getElementById('enrollmentForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const globalError = document.getElementById('globalError');
+
+    function showFieldError(inputId, errorId, show) {
+        const input = document.getElementById(inputId);
+        const error = document.getElementById(errorId);
+        if (show) {
+            input.classList.add('input-error');
+            error.style.display = 'block';
+        } else {
+            input.classList.remove('input-error');
+            error.style.display = 'none';
+        }
+    }
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        globalError.style.display = 'none';
+
+        const name = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        let valid = true;
+        showFieldError('fullName', 'nameError', !name);
+        if (!name) valid = false;
+
+        showFieldError('email', 'emailError', !email || !emailRe.test(email));
+        if (!email || !emailRe.test(email)) valid = false;
+
+        if (!valid) return;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+
+        const linkedin = document.getElementById('linkedin').value.trim();
+        const body = new URLSearchParams({ fullName: name, email, linkedin, _captcha: 'false' }).toString();
+
+        fetch('https://formsubmit.co/whenshifthappens.pod@gmail.com', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+            },
+            body
+        })
+        .then(r => { if (!r.ok) throw new Error(); return r.text(); })
+        .then(() => {
+            document.getElementById('form').innerHTML = `
+                <div class="form-success">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>You're on the list!</h3>
+                    <p>Thanks, ${name}. We'll be in touch within 48 hours at <strong>${email}</strong>.</p>
+                    <p style="margin-top:16px">In the meantime, catch the podcast:
+                        <a href="https://www.youtube.com/@when-shift-happens" target="_blank" style="color:var(--accent-color)">When Shift Happens</a>
+                    </p>
+                </div>
+            `;
+        })
+        .catch(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-bolt"></i> Join Waiting List';
+            globalError.textContent = 'Something went wrong. Please try again in a moment.';
+            globalError.style.display = 'block';
+        });
+    });
+    </script>
+</body>
+</html>
