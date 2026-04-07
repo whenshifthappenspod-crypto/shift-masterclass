@@ -308,13 +308,18 @@ section {
 .hero-guests {
     margin: 20px calc(-50vw + 50%) 0;
     width: 100vw;
-    overflow: hidden;
+    text-align: center;
+    background-image: url('../images/shade-bg.jpg');
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: auto 100%;
 }
 
 .hero-guests img {
-    width: 100%;
+    max-width: 100%;
+    width: auto;
     height: auto;
-    display: block;
+    display: inline-block;
 }
 
 .speaker-disclaimer {
